@@ -1,0 +1,238 @@
+body {
+	font-family: sans-serif;
+}
+.index {
+	opacity: 0;
+	transition: opacity 1.5s;
+	-webkit-transition: opacity 1.5s;
+}
+.wrapper {
+	padding: 25px;
+}
+@media (min-width: 550px) {
+	.wrapper {
+		padding: 75px;
+	}
+}
+nav	{
+	margin: 15px 0;
+}
+.controls {
+	height: 50px;
+	position: relative;
+}
+.next {
+	float: right;
+}
+.index nav {
+	margin: 0;
+	position: fixed;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+}
+#bug-bounty-guide {
+	text-decoration: none;
+	color: #222;
+	-webkit-text-fill-color: #222;
+	-webkit-text-stroke: 0.3px #222;
+}
+.nav-down {
+	background-color: transparent;
+	padding: 35px 25px;
+}
+.nav-up {
+	background-color: #fff;
+	padding: 20px 25px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+footer {
+	border-top: 1px solid grey;
+	padding-top: 10px;
+	margin-top: 20px;
+}
+#blue, #red {
+	position: relative; 
+	height: 40vh;
+	width: 100%;
+	color: #333;
+}
+#blue .wrapper, #red .wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+}
+#blue {
+	margin-top: 95px;
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+}
+#blue span {
+	background: #4EAAEE;
+	color: #fff;
+	padding: 3px;
+}
+#red {
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+}
+#red span {
+	background: #FA402E;
+	color: #fff;
+	padding: 3px;
+}
+@media (min-width: 550px) {
+	#blue, #red {
+		margin-left: 0;
+		height: 100vh;
+		width: 50%;
+		position: relative; 
+	}
+	#blue {
+		margin-top: 0;
+	}
+}
+.background-blue {
+	background-color: #4EAAEE;
+}
+.background-red {
+	background-color: #FA402E;
+}
+.button-landing {
+	background-color: #fff;
+	border: 3px solid #eee;
+	border-radius: 50px;
+}
+.button-landing:hover {
+	border: 3px solid #888;
+	border-radius: 50px;
+}
+#button {
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+	background-color: #fff;
+	border: 3px solid #eee;
+	border-radius: 50px;
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+	height: 41px;
+}
+#button:hover {
+	border-radius: 50px;
+	border: 3px solid #888;
+}
+#blue:hover #button,
+#red:hover #button {
+	border: 3px solid #888;
+}
+.button {
+	background-color: #fff;
+	border: 3px solid #eee;
+	border-radius: 50px;
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+	height: 41px;
+}
+.button:hover {
+	border-radius: 50px;
+	border: 3px solid #888;
+}
+textarea {
+	padding: 5px;
+	height: 50vh;
+}
+#result {
+	margin: 20px 0; 
+}
+#progress {
+    width: 100%;
+    background-color: #eee;
+    margin-bottom: 35px;
+    border-radius: 4px;
+}
+#bar {
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+}
+img {
+	max-width: 70vw;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+}
+#small_img {
+	max-width: 250px;
+	margin: 30px 0;
+	-webkit-transition: all 250ms;
+	-moz-transition: all 250ms;
+	transition: all 250ms;
+}
+figcaption {
+	text-align: center;
+	margin-top: -20px;
+	margin-bottom: 25px;
+	font-size: 13px;
+}
+blockquote {
+	border-left: 2px solid #1EAEDB;
+	padding-left: 10px;
+}
+input {
+	width: 100%;
+	background: transparent;
+	font-size: 1.55em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
+	margin-top: 5px;
+	margin-bottom: 25px;
+	border: 2px solid #eee;
+}
+input[type="number"], input[type="text"] {
+	height: 55px;
+}
+label {
+	margin-top: 10px;
+}
+#graph {
+	margin-top: 69px;
+	max-width: 70vw;
+}
+table {
+	width: 100%;
+	margin-left: auto; 
+    margin-right: auto;
+}
+table ul {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.margin-bottom {
+	margin-bottom: 45px;
+}
+#author {
+	height: 180px;
+	width: 180px;
+	background: url(../img/author.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+}
+#author:hover {
+	background: url(../img/frog.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

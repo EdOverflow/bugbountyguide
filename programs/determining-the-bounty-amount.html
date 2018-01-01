@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>How do I determine the bounty amount?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a href="../index.html">← Home</a>
+    </nav>
+    <h3>How do I determine the bounty amount?</h3>
+    <p>One of the most challenging steps when running a bug bounty program is often determining the bounty amount. The reason is that there are a lot of factors involved during this process.</p>
+
+    <h4>The core concept of a bounty</h4>
+    <p>Bounties should, at the very least, be evaluated based on the overall severity of the security vulnerability. The reason for this is because you are trying to encourage hackers to report their findings directly to you rather than selling them to a third-party or maybe even exploiting the bug. One widely used metric for evaluating the severity of a security vulnerability is the <i><a href="https://www.first.org/cvss/specification-document">Common Vulnerability Scoring System</a></i> (CVSS). A bug bounty program's team should be able to understand CVSS scores and calculate them based on a report. It is important to note that the overall severity in CVSS consists of all three metric groups — Base Score, Environmental Score, and Temporal Score — and that all three should be considered when evaluating the bounty amount. <a href="https://insights.sei.cmu.edu/cert/2015/09/cvss-and-the-internet-of-things.html">CVSS is not perfect</a> by any means, but currently, there are very few alternatives, so we will be sticking to this metric system until a new solution is published.</p>
+
+    <h4>Structure</h4>
+    <p>As seen in <i><a href="https://edoverflow.com/2017/the-math-behind-bug-bounties/">"The math behind bug bounties — A formula to calculate bounty amounts."</a></i>, one way of creating a clear structure when calculating payout amounts is by simply using a mathematical formula. The formula presented in the piece takes your program’s maximum bounty amount and an exponent as input; then it maps the bounty amount to the overall severity of the finding. The output is a list of bounty amounts with their corresponding severity score.</p>
+
+    <p><label for="b_max">Your program’s maximum bounty amount.</label>
+    <input type="number" id="b_max" value="10000" />
+    <br />
+    <label for="C">The report's overall CVSS score.</label>
+    <input type="number" id="C" value="5" step="0.1" />
+    <br />
+    <label for="n">Exponent — gap between bounty amounts.</label>
+    <input type="number" id="n" value="1" step="1" min="1.0" max="3.0" />
+    <br />
+    <button id="button" class="button">Calculate</button></p>
+    <p id="result"></p>
+
+    <div id="graph"></div>
+
+    <div>
+     <table id="bountyTable"></table>
+    </div>
+
+    <h3>Competition</h3>
+    <p>Another aspect that should be considered when determining you bounty amounts is competition. If you really want to encourage the top hunters to participate in your program, you are going to need to stand out from the rest. Competitive bounty amounts are one way of attracting these highly-skilled hunters.</p>
+
+    <nav class="controls">
+      <a href="writing-security-policies.html" class="button">← Previous</a> <a class="button next" href="making-triage-easier.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+  <script type="text/javascript" src="../assets/js/plotly.min.js"></script>
+  <script type="text/javascript" src="../assets/js/bug-bounty-formula.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sub-domain takeover</title>
+  <style>
+    body {
+      position: relative;
+      font-family: Menlo, monospace;
+      text-rendering: geometricPrecision;
+      /*
+      ==================================================
+      Change the background image here.
+      ==================================================
+      */
+      background: url("../assets/img/frog.png");
+      background-repeat: no-repeat;
+      -webkit-transition: all 250ms;
+      -moz-transition: all 250ms;
+      transition: all 250ms;
+    }
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      padding: 50px;
+      height: auto;
+      width: 70vw;
+      background: #222;
+      color: white;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      -webkit-transition: all 250ms;
+      -moz-transition: all 250ms;
+      transition: all 250ms;
+    }
+    div:hover {
+      background: rgba(34, 34, 34, 0.8);
+    }
+    a {
+      color: #FF8F95;
+      text-decoration: none;
+      padding: 2px;
+      border-bottom: 3px solid #fff;
+      transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    a:hover {
+      border-bottom: 3px solid #FF8F95;
+    }
+    span {
+      overflow: hidden;
+      border-right: .45em solid #33ff66;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: blink-caret .75s step-end infinite;
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #33ff66; }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>$ <span>Sub-domain takeover</span></h1>
+    <p>This is a proof of concept to demonstrate that one can claim
+    this sub-domain and serve content on it.</p>
+    <p>Best regards,</p>
+    <!--
+    ==================================================
+    Add your Twitter, bug bounty platform, etc. handle
+    here.
+    ==================================================
+    -->
+    <a href="https://twitter.com">@username</a>
+  </div>
+  <!--
+  ==================================================
+  This demonstrates that one can execute JavaScript
+  on this sub-domain.
+  ==================================================
+  -->
+  <script>alert(document.domain)</script>
+  <!--https://www.youtube.com/watch?v=YSDAAh6Lps4-->
+</body>
+</html>

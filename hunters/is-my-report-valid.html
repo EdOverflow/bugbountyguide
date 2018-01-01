@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Is my report valid?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>Is my report valid?</h3>
+    <p>A frequent question that I hear from bug bounty hunters is whether their finding is a valid issue and if they should report it. This tool will check the contents of your report against a list of keywords commonly associated with invalid reports and determine whether you should submit your report or not.</p>
+    <textarea id="report" class="u-full-width">
+Hi team,
+I observe this behaviour in your website and found poor password complexity forced when registering for an account. Here are the reprdouce steps below.
+Reproduce steps:
+
+1.Open app.legalrobot-uat.com
+2.Open registration form.
+3.Fill all the fields but when going for a password write a password like this ''abcdefghijklmn''
+4.And your account was successfully created with this simple type of password and can easily be guessed.
+Fix Or Reccomendation:
+According to password policy for choosing a secure and complex password we must consider the following points in password policy:
+Passwords should use three of four of the following four types of characters:
+1.Lowercase
+2.Uppercase
+3.Numbers
+4.Special characters such as !@#$%^&*(){}[]
+
+In reproduce steps you can see the password which is ''abcdefghijklmn''. there is no uppercase letter forced,no numbers forced and no special characters forced by your website. If you want to make your password complexity good your should consider these four points in your password field written above.
+i usually when visit other websites and go for registering an account and when writing a password in password i observe that these password complexity points are forced by the website and you cant make a password like ''abcdefghijklmn'' which can easily guessed by someone.
+
+Hope you'll triage this.
+Thanks
+  </textarea>
+    <br>
+    <button id="button">Check</button>
+    <br>
+    <div id="result"></div>
+    <div id="progress">
+      <div id="bar"></div>
+    </div>
+
+    <h4>🔥 The Hall of N/A</h4>
+    <p>This is the notorious <i>Hall of N/A</i> — a list of issues that are usually not accepted by bug bounty programs.</p>
+    <table>
+      <tr>
+        <th>Issue type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Network-level Denial of Service (DoS/DDoS) vulnerabilities</td>
+        <td>Most bug bounty programs, if not all programs, do not want you to disrupt any of their services. On top of that, to be honest with you, if someone really wants to take down a service they will always find a way.</td>
+      </tr>
+      <tr>
+        <td>Missing security headers</td>
+        <td>These low severity issues can easily be detected with tools such as Hardenize and Security Headers.</td>
+      </tr>
+      <tr>
+        <td>Content injection</td>
+        <td>The severity of this issue is so low that it does not warrant a report.</td>
+      </tr>
+      <tr>
+        <td>Logout CSRF</td>
+        <td>In order for CSRF to be a valid issue it must affect some important action such as deleting one's account.</td>
+      </tr>
+      <tr>
+        <td>Missing cookie flags on non-security-sensitive cookies</td>
+        <td>These type of issues do not present a major risk and are usually picked up by scanners.</td>
+      </tr>
+      <tr>
+        <td>401 injection</td>
+        <td>With this issue type it really depends on the program. Check previous reports to the program you plan on reporting 401 injection to and see if they have accepted 401 injection in the past.</td>
+      </tr>
+      <tr>
+        <td>Banner grabbing issues (figuring out what web server the company is using)</td>
+        <td>Without a detailed proof of concept, most programs will not accept these type of reports.</td>
+      </tr>
+    </table>
+
+    <nav class="controls">
+      <a class="button" href="platforms.html">← Previous</a> <a class="button next" href="proof-of-concepts.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+  <script>
+    document.getElementById("button").addEventListener("click", function() {
+      var na_list = [
+        "emkei.cz",
+        "content injection",
+        "content spoofing",
+        "text injection",
+        "spf record",
+        "best practice",
+        "server version disclosure",
+        "unsafe-inline",
+        "poodle",
+        "beast",
+        "breach",
+        "crime",
+        "freak",
+        "rc4",
+        "lucky13",
+        "sweet32",
+        "cve-2013-0169",
+        "cve-2013-3587",
+        "spoof",
+        "spoofing",
+        "dmarc",
+        "missing security header",
+        "host header redirection",
+        "ssllabs",
+        "idn",
+        "homograph",
+        "tabnabbing",
+        "ddos",
+        "ux",
+        "dear sir",
+        "password complexity",
+        "autocomplete",
+        "clickjacking",
+        "invalid email verification",
+        "password policy",
+        "news feed",
+        "rss",
+        "_blank",
+        "mixed content",
+        "rate limiting",
+        "missing csp",
+        "ui redressing",
+        "400 bad request",
+        "bounty pls",
+        "options method",
+        "put method",
+        "trace method",
+        "is an opt-in security enhancement",
+        "is a malicious technique of tricking a",
+        "version of nginx",
+        "email bombing",
+        "email flooding",
+        "is a mechanism that allows restricted resources",
+        "x-frame-options",
+        "x-xss-protection",
+        "401 injection",
+        "x-content-type-options",
+        "notepad and paste",
+        "Certificate Authority Authorization",
+        "spdy"
+      ];
+    
+      var result = document.getElementById("result");
+      result.innerHTML = " ";
+      var counter = 0;
+      var keywords = [];
+    
+      var report = document.getElementById("report").value.toLowerCase();
+    
+      for (var i = 0; i < na_list.length; i++) {
+        if (report.indexOf(na_list[i]) !== -1) {
+          counter++;
+          keywords.push("\n" + na_list[i]);
+        }
+      }
+
+      var elem = document.getElementById("bar");
+      elem.style.width = 100 - counter + '%';
+      if (counter == 0) {
+        elem.style.background = '#10CA89';
+      }
+    
+      if (report.length < 1) {
+        var img = document.createElement("img");
+        img.src = "https://user-images.githubusercontent.com/18099289/34410756-b44b80be-ebd2-11e7-8c34-f54f20d78b6e.png";
+        var src = document.getElementById("result");
+        src.appendChild(img);
+      } else if (counter > 0 && report.length > 1) {
+        elem.style.background = '#7f0000';
+        if (keywords.length > 1) {
+      	 result.innerHTML += "<b>⚠ Your report appears to contain " + keywords.length + " keywords commonly associated with invalid reports:</b> " + keywords;
+        } else {
+          result.innerHTML += "<b>⚠ Your report appears to contain 1 keyword commonly associated with invalid reports:</b> " + keywords;
+        }
+      } else {
+        result.innerHTML += "<b>Looking good!</b> No keywords commonly associated with invalid reports were detected.";
+      }
+    });
+  </script>
+</body>
+</html>

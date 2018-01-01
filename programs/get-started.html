@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>How do I launch a bug bounty program?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>How do I launch a bug bounty program?</h3>
+    <p>Before you even start accepting your first reports, we need to go through some simple steps and points that need to be considered before launching a bug bounty program.</p>
+
+    <h4>Your maturity model</h4>
+    <p>Your security maturity level will determine your capabilities and a lot of the options that you have when running a program. Bug bounty programs with a sophisticated security team of 50 employees will not operate in the same way as an open-source project with 2 members. That being said, both examples will base a lot of their program design on the same principles as we will see below.</p>
+
+    <h5>Organisational</h5>
+    <p>Make sure to have a clear organised plan when launching your bug bounty program. Define clear guidelines for triaging, resolving issues, and make sure that your security policy covers everything described in <i><a href="/writing-security-policies.html">"How do I write a good security policy?"</a></i>.
+
+    <h5>Engineering</h5>
+    <p>Repeat after me, track, triage, and fix. Have an external mechanism for allowing hunters to submit reports and an internal tracking system to escalate the reports to the corresponding team. Most bug bounty platforms cover this area and supply the program with dedicated tools for this process.</p></p>
+
+    <h5>Communication</h5>
+    <p>Since a lot of things in the bug bounty industry are based on trust, communication is key; not only internally, but externally too. Set up a clear means of communication internally in order to help working together, and set up a security@ or bbp@ address, for bug bounty hunters to contact you if they have questions concerning your bug bounty program. Include the address in your security policy and if you use an address other than security@ as defined in <a href="https://www.ietf.org/rfc/rfc2142.txt">RFC2142</a>, remind hunters only to only use that address to ask questions, and not to report security issues.</p>
+
+    <h5>Real-time tracking</h5>
+    <p>Keep track not only of your platform's security with monitoring tools and scanners but also store your bug bounty program's metrics in a well-organised overview page.</p>
+    <img id="small_img" src="../assets/img/all_time_metrics.png">
+
+    <p>If you have a significant number of duplicates this can mean many things such as you are taking too long to resolve the issue and/or you are accepting too much low-hanging fruit. Learn to spot patterns and apply changes accordingly to improve your overall metrics.</p>
+    <img src="../assets/img/report_statuses.png">
+
+    <h5>Incentives</h5>
+    <p>Rewarding researchers for their findings and being proactive will keep hunters motivated. At the end of the day, the best program understands that they must work together with the researcher and not against them. Bug bounties should be a joint effort. Refer to <i><a href="determining-the-bounty-amount.html">"How do I determine the bounty amount?"</a></i> to get started setting up your bounty amounts.</p>
+
+    <h4>Survey</h4>
+    <p>To get a better idea of your maturity level, HackerOne have <a href="https://hackerone.com/vulnerability-coordination-maturity-model">a survey</a> that you can take which will assess the criteria described above and then plot the results on to a graph.</p>
+    <a href="https://hackerone.com/vulnerability-coordination-maturity-model" class="button margin-bottom">Take the survey</a>
+
+    <h4>Platform vs non-platform based programs</h4>
+    <p>Bug bounty programs can operate on a platform or the company may decide to run everything on their own. The pros of using a platform consist mainly of the functionality, tools, assistance, and wide range of hackers that they provide. Hunters also tend to have a preference for platform-based programs <sup>[<a href="https://xkcd.com/285/">citation needed</a>]</sup>, because of the safe harbours that the platforms can provide. Platforms will standardise — and more often than not — simplify the process of submitting and triaging reports. Please refer to <i><a href="platform.html">"What platform should I use?"</a></i> for a list of bug bounty platforms.</p>
+
+    <h4>Public vs private programs</h4>
+    <p>Another thing one must consider is whether to run a public bug bounty program or a private. A public program allows anyone to participate and report issues. A private one, on the other hand, generally requires the company to invite the hunters in order for them report anything. The following table highlights the pros and cons of the two program types.</p>
+
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>👍 Pros</th>
+        <th>👎 Cons</th>
+      </tr>
+      <tr>
+        <td>Public</td>
+        <td>
+          <ul>
+            <li>Anybody can participate.</li>
+            <li>Good PR.</li>
+            <li>On certain platforms, it is easier to publicly disclose a report.</li>
+            <li>Public feedback.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>A lot of noise.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Private</td>
+        <td>
+          <ul>
+            <li>Less noise.</li>
+            <li>Usually only highly skilled participants.</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Only hunters that have been invited can participate.</li>
+            <li>May require a public inbox (security@) in order for non-participants to report security issues.</li>
+            <li>No public feedback.</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+
+    <p>There is also the possibility to start as a private program in order to get a feel for what to expect, and then launch a public program when you feel ready. Some programs, so-called <b>hybrid programs</b> combine both, and invite hunters that report valid issues on their public program, to a private version of the program that has a greater attack surface.</p>
+
+    <nav class="controls">
+      <a class="button next" href="writing-security-policies.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+</body>
+</html>

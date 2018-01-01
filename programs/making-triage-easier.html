@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>How can I make the triaging process easier?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>How can I make the triaging process easier?</h3>
+    <p>Triaging reports can be tough and repetitive work. Here are some simple steps that can boost your triaging efficiency and make your life easier.</p>
+
+    <h4>Use response templates</h4>
+    <p>The <i><a href="https://github.com/EdOverflow/bug-bounty-responses">Bug bounty responses</a></i> repository is a collection of response templates for invalid bug bounty reports. This allows you to quickly respond to low-quality reports without wasting too much valuable time that could be invested into the critical severity reports.</p>
+    <pre><code>$ git clone https://github.com/fransr/template-generator.git
+$ git clone https://github.com/EdOverflow/bug-bounty-responses.git
+$ cp -a bug-bounty-responses/tpls/. template-generator/tpls/
+$ cd template-generator
+$ php -S localhost:8000</code></pre>
+    <img src="../assets/img/bug_bounty_responses.png">
+    <figcaption>Frans Rosén's <i>Template generator</i> in action.</figcaption>
+    
+    <h4>Set up keyword triggers</h4>
+    <p>To make your life easier, set up a tool that monitors reports for certain keywords commonly associated with invalid reports, and then send automated responses to that report if a certain number of keywords are detected. You can see a keyword trigger in action in <a href="https://hackerone.com/reports/240987">this report</a>. Can you guess what the keyword was?</p>
+
+    <h4>Consider the hunter's reputation</h4>
+    <p>Most bug bounty platforms incorporate some sort of reputation system whereby highly-skilled hunters can demonstrate their skill in terms of points and/or ranking. Verifying the hunter's reputation while triaging can often help you notice your own mistakes. Is it really likely that someone at the very top of the platform's leader board would report an invalid issue? It is safe to assume that they probably would not.</p>
+
+    <h4>Familiarise yourself with the community</h4>
+    <p>Get to know the hunters! You can apply to join to <i><a href="https://bugbountyforum.com/">Bug Bounty Forum</a></i>, <i><a href="https://bugbountyworld.com/">Bug Bounty World</a></i>, or simply follow hunters on Twitter. Getting to know the individual on the other side of the playing field will almost certainly drastically change the way you triage. Not only will you recognise the hunter reporting an issue to your program, you are more likely to approach the report assuming benevolence. On a side note, this point also includes understanding what the other side does, so make sure to read the hunter's sections here on <i>Bug Bounty Guide</i>.</p>
+
+    <nav class="controls">
+      <a class="button" href="determining-the-bounty-amount.html">← Previous</a> <a class="button next" href="expectations.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+</body>
+</html>

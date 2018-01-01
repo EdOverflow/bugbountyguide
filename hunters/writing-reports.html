@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>What does a good report look like?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>What does a good report look like?</h3>
+    <p>Legend has it that the best bug bounty hunters can write reports in their sleep. OK, jokes aside, while writing reports is a very important part of bug bounty hunting, we can simplify this whole process by following these basic guidelines.</p>
+
+    <h4>Summary</h4>
+    <p>The first section of your report should start with a brief summary introducing the reader to your finding. Summaries can be as simple as:</p>
+    <blockquote>example.com is vulnerable to DOM-based XSS via the <code>q</code> parameter.</blockquote>
+
+    <p>Or as detailed as:</p>
+    <blockquote>https://imgur.com/vidgif/url endpoint is vulnerable to a SSRF vulnerability which allows an attacker to craft connections originating from imgur servers to any destination on the internet and imgur internal network and craft outgoing UDP-packets / telnet-based protocol sessions (for example, to connect to SMTP servers from imgur and send spam). <sup><a href="https://hackerone.com/reports/115748">[1]</a></sup></blockquote>
+
+    <h4>Vulnerability Description</h4>
+    <p>This section covers all the details related to your finding. State what you found again, make the technical points clear, and explain what causes the issue. There are exceptions though where this section can be skipped. There is a popular English idiom:</p>
+    <blockquote>"A picture is worth a thousand words."</blockquote>
+
+    <p>The same can be said about an excellent proof of concept:</p>
+    <blockquote>"A phenomenal security vulnerability proof of concept is worth a thousand words."<br>- Probably Gandhi</blockquote>
+
+ 	<h4>Proof of concept</h4>
+ 	<p>The proof of concept is where you really need to demonstrate the impact in the "flashiest" way possible. Make it as easy as possible for the program to see what the issue is. If your issue is cross-site scripting, then an <a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> can go a long way to help the program figure out where the issue lies.</p>
+
+ 	<h4>Browsers verified in</h4>
+ 	<p>Even if the issue is not browser-dependent, it is good practice to inform the program about what browser you used to trigger the vulnerability. This can help the team behind the bug bounty program reproduce your finding. In Google Chrome, the version is located at <code>chrome://version/</code> and on Mozilla Firefox you can visit <code>about:</code>.</p>
+
+ 	<h4>Mitigation</h4>
+ 	<p>If you followed the advice in <i><a href="get-started.html">"How do I get started with bug bounty hunting?"</a></i>, you should be capable of giving a brief description of how the bug bounty program should go about fixing your finding. It is also a good idea to link to the relevant <i><a href="https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series">OWASP Prevention</a></i> cheat sheet.</p>
+
+  <h4>Spellcheck</h4>
+  <p>I highly recommend running <a href="https://app.grammarly.com/">Grammarly</a> to find spelling mistakes in your report. Some may argue that if your report contains sensitive information you should not be running it through a third-party. So keep that in mind when spell checking your report.</p>
+  <img id="small_img" src="../assets/img/grammarly.jpg">
+
+ 	<h4>Altogether</h4>
+ 	<pre><code># Summary
+...
+
+# Vulnerability details
+...
+
+# Impact
+...
+
+# Proof of concept
+...
+
+# Browsers verified in
+...
+
+# Mitigation
+...</code></pre>
+
+    <h3>Templates</h3>
+    <p>Writing reports can be repetitive work and in a competitive environment every minute is crucial, therefore having templates for different vulnerability types can be a big help. <a href="https://twitter.com/fransrosen">Frans Rosén</a>, one of the smartest bug bounty hunters in the industry, published <a href="https://github.com/fransr/template-generator">a tool</a> that fills in template reports for you. Get started writing up all sorts of templates and make sure to cover all the points listed in the previous section!</p>
+
+    <pre><code>$ git clone https://github.com/fransr/template-generator
+$ cd template-generator
+$ php -S localhost:8000</code></pre>
+
+    <video width="320" height="240" autoplay loop>
+      <source src="../assets/cat.mp4" type="video/mp4" />
+    </video>
+
+    <nav class="controls">
+      <a class="button" href="writing-reports.html">← Previous</a> <a class="button next" href="../index.html">Home →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+</body>
+</html>

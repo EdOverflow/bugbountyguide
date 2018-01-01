@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>How do I write a good security policy?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>How do I write a good security policy?</h3>
+    <p>In order to really explain how to write a good security policy, we will use security.txt's security policy as an example.</p>
+    <img src="../assets/img/security-txt_policy.png">
+
+    <h4>Project description</h4>
+    <p>Start your security policy off with a brief description of your company or project. This is the equivalent of a meta tag description on a website. This allows the hunter to get a brief overview of what you do.</p>
+
+    <h4>Disclosure policy</h4>
+    <p>Explain exactly what your disclosure policy is.</p>
+    <blockquote>
+      "We will investigate legitimate reports and make every effort to quickly resolve any vulnerability. To encourage responsible reporting, we will not take legal action against you nor ask law enforcement to investigate you providing you comply with the following guideline: 
+
+      <i>Make a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our services.</i>"
+    </blockquote>
+
+    <h4>Process</h4>
+    <p>security.txt uses this section to make it clear what their disclosure process is, from initial report to final fix and bounty. The program actually includes a diagram to describe the process as seen below:</p>
+    <img src="../assets/img/security-txt_process.png">
+
+    <h4>Languages</h4>
+    <p>This is an optional section and inspired by Google's <i><a href="https://bughunter.withgoogle.com/">Vulnerability Reward Program</a></i> (VRP). Include a section listing all the various languages that you accept your reports in. Remember some hunters might feel more comfortable describing their finding in their native language, so have a solid language base can be a big help.</p>
+    <img src="../assets/img/security-txt_languages.png">
+
+    <h4>Scope</h4>
+    <p>A wise hunter once said:</p>
+    <blockquote>"Where is the bloody scope?!"</blockquote>
+    <p>Now I doubt any program would ever want to hear that about their security policy. So to solve this problem I have a golden secret which is directly related to the example program that I am using in these explanations. <b>Use <a href="https://securitytxt.org/">security.txt</a> files to define your scope.</b> Then all the hunter and your team have to do in order to verify whether the asset is in scope is:</p>
+    <pre><code>$ curl http://example.com/.well-known/security.txt
+# This project is in scope!
+Contact: security@example.com
+Policy: https://example.com/security-policy.html
+Signature: https://example.com/.well-known/security.txt.sig</code></pre>
+
+    <p>Also, state what assets are not in scope. It is essential that you also do not encourage hunters to go out of scope by rewarding them. In my opinion, an acceptable exception to this rule is if the vulnerability is in the high to critical range.</p>
+
+    <form onsubmit="download(this['name'].value, this['blah'].value + this['contact'].value + this['text1'].value + '\n' + this['encryption'].value + this['text2'].value + '\n' + this['acknowledgements'].value + this['text3'].value + '\n' + this['policy'].value + this['text4'].value + '\n' + this['signature'].value + this['text5'].value)">
+        <input type="hidden" name="name" value="security.txt">
+        <input type="hidden" name="blah" value="">
+
+        <label>Contact: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.3">(description)</a></label><input name="contact" type="hidden" value="Contact: "> 
+        <input class="u-full-width" type="text" placeholder="security@example.com" name="text1" required>
+
+        <label>Encryption: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.4">(description)</a></label><input name="encryption" type="hidden" value="Encryption: ">
+        <input class="u-full-width" type="text" placeholder="https://example.com/pgp-key.txt" name="text2">
+
+        <label>Acknowledgements: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.7">(description)</a></label><input name="acknowledgements" type="hidden" value="Acknowledgements: "> 
+        <input class="u-full-width" type="text" placeholder="https://example.com/acknowledgements.html" name="text3">
+
+        <label>Policy: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.6">(description)</a></label><input name="policy" type="hidden" value="Policy: "> 
+        <input class="u-full-width" type="text" placeholder="https://example.com/security-policy.html" name="text4">
+
+        <label>Signature: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.5">(description)</a></label><input name="signature" type="hidden" value="signature: "> 
+        <input class="u-full-width" type="text" placeholder="https://example.com/.well-known/security.txt.sig" name="text5">
+
+        <br>
+        <button class="button" type="submit">Generate security.txt file</button>
+    </form>
+
+    <h4>Rewards</h4>
+    <p>Now you can start talking money. Follow the guidelines in <i><a href="determining-the-bounty-amount.html">"How do I determine the bounty amount?"</a></i> and place a table with all your bounty amounts into this section.</p>
+    <img src="../assets/img/security-txt_rewards.png">
+
+    <h4>Service-level agreement (Performance expectations)</h4>
+    <p>Fill in the template below with what the hunter should expect from your program performance-wise.</p>
+    <pre><code>Time to first response: 2 business days or less.
+Time to triage: 3 business days or less.
+Time to resolution: 5 business days or less.</code></pre>
+
+    <h4>Exclusions</h4>
+    <p>For this section of your security policy, you can state what <b>test types</b> and then what <b>issue types</b> are excluded from the scope of your bug bounty program. Test types consist of strategies that hackers might use while hunting; issue types are vulnerability categories that your program usually does not accept. For the test types, you can use the examples below and adapt it according to your program's rules.</p>
+    <pre><code>The following test types are excluded from the scope:
+
+- Findings from physical testing such as office access (e.g. open doors, tailgating).
+- Findings derived primarily from social engineering (e.g. phishing, vishing).
+- Findings from applications or systems not listed in the "Scope" section.
+- Vulnerability reports with video only proof of concepts.
+- Reports that state that software is out of date or vulnerable without a proof of concept.
+- Highly speculative reports about theoretical damage. Be concrete.
+- Vulnerabilities as reported by automated tools without additional analysis as to how they’re an issue.
+- Issues in third-party services should be reported to the respective team.</code></pre>
+
+    <p>When it comes to the issue types section, it is probably best that you do not only list the issue types but also state the exact reason as to why you do not accept those findings — remember communication is key. The security.txt bug bounty program uses a <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> table to accomplish this.</p>
+    <img src="../assets/img/security-txt_issue_types.png">
+
+    <h4>Proof of concepts</h4>
+    <p>Use this section of your policy to describe what you want the hunter to demonstrate in their proof of concept. For instance, in order to quickly determine where a cross-site scripting vulnerability lies, <a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> is the most common method of quickly verifying.</p>
+    <img src="../assets/img/yahoo_poc.png">
+    <figcaption><a href="https://hackerone.com/yahoo">Yahoo</a> allowing hunters to demonstrate root access without affecting their services.</figcaption>
+    <img src="../assets/img/security-txt_poc.png">
+    <figcaption>security.txt uses a table.</figcaption>
+
+    <h4>Advice</h4>
+    <p>Give the hunter a bit of advice. security.txt links to two books from the <i><a href="hunters/books.html">"What books should I read?"</a></i> list and then states that if the hunter has any questions they can contact the team at any time.</p>
+    <blockquote>
+    We encourage hackers to read <a href="https://leanpub.com/web-hacking-101">Web Hacking 101</a> and <a href="https://leanpub.com/ltr101-breaking-into-infosec">Breaking into Information Security: Learning the Ropes 101</a> to get a good idea of the type of issues that we are looking for.
+    If you have a question, please do not hesitate to include it in the report. We are always here to help. You may also contact us directly via Twitter DMs or Keybase. If your messages contain sensitive information, we would prefer you use the latter.</blockquote>
+
+    <h4>Terminology</h4>
+    <p>Since a lot of terminology may be used interchangeably, it is a good idea to define your terms in order to prevent any potential confusion. The security.txt program defines the terms "severity", "impact" and "priority" — essential terminology, frequently used during the disclosure process.</p>
+
+    <nav class="controls">
+      <a href="get-started.html" class="button">← Previous</a> <a class="button next" href="determining-the-bounty-amount.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+  <script type="text/javascript">
+   function download(filename, text) {
+       var magic = document.createElement('a');
+       magic.setAttribute('href', 'data:text/plain;charset=utf-8,' +
+           encodeURIComponent(text));
+       magic.setAttribute('download', filename);
+       magic.style.display = 'none';
+       document.body.appendChild(magic);
+       magic.click();
+       document.body.removeChild(magic);
+   }
+  </script>
+</body>
+</html>

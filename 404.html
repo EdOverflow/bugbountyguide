@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>404 - Page not found</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <link rel="shotcut icon" href="assets/img/favicon.png">
+  <meta name="theme-color" content="#1EAEDB">
+</head>
+<body>
+  <div class="wrapper">
+    <h1 style="text-align: center">404 - Page not found</h1>
+    <div id="field">
+    	<img id="404" src="assets/img/404.jpg">
+    </div>
+
+    <nav class="controls">
+      <a class="button" href="index.html">← Return home</a> <a class="button next" id="mr_robot">Discover more →</a>
+    </nav>
+  </div>
+  <script type="text/javascript">
+  	document.getElementById("mr_robot").addEventListener("click", function() {
+  		var field = document.getElementById("field");
+  		var img = document.getElementById("404");
+  		img.parentNode.removeChild(img);
+  		field.innerHTML += '<video style="display: block; margin: 0 auto; max-width: 70vw; height: auto;" autoplay loop><source src="assets/mr_robot.mp4" type="video/mp4" /></video>'
+  	});
+  </script>
+</body>
+</html>

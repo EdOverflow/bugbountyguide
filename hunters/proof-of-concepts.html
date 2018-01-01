@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>How do I create a detailed proof of concept?</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a class="button" href="../index.html">← Home</a>
+    </nav>
+    <h3>How do I create a detailed proof of concept?</h3>
+    <p>I have a little secret for you that will completely change the way you create your proof of concepts: <b>Stick to the rules like a <a href="https://en.wikipedia.org/wiki/White_hat_(computer_security)">white hat</a> and then, with that in mind, create your proof of concept thinking like a <a href="https://en.wikipedia.org/wiki/Black_hat">black hat</a>.</b> What I mean by this is always stick by the rules while hunting and then when it comes to demonstrating the impact of the issue, create your proof of concept in a way that highlights how your finding could potentially affect the target. This does <b>not</b> always work and definitely does <b>not</b> mean you should start escalating the issue and gaining unauthorised access. This simply signifies that you need to understand what the real potential impact is of your finding and then work according to the program's rules in order to create something really clever which could actually work in a real-world scenario. You can see this mindset in action in <a href="https://hackerone.com/reports/289823">this report</a>.</p>
+
+    <h3>Hall of PoC™</h3>
+    <p>This is a mega list of proof of concepts (PoCs) for you to use when demonstrating the impact of your issue. The PoCs are designed so that the bug bounty program can quickly understand the issue and to ensure you do not harm any of their users or services in the process. That being said, always follow the rules on the program's policy; the program's security policy always takes precedence over the list.</p>
+    <table>
+      <tr>
+        <th>Issue type</th>
+        <th>PoC</th>
+      </tr>
+      <tr>
+        <td>Cross-site scripting</td>
+        <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a></sup></td>
+      </tr>
+      <tr>
+        <td>Arbitrary code execution</td>
+        <td>
+          <ul>
+            <li>Read: <code>cat /proc/1/maps</code>
+            <li>Write: <code>touch /root/your_username</code>
+            <li>Execute: <code>id</code></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>SQL injection</td>
+        <td>
+          <p>In most cases simply grabbing the SQL server version should be enough to demonstrate basic SQL injection.</p>
+          <ul>
+            <li>MySQL and MSSQL: <code>SELECT @@version</code></li>
+            <li>Oracle: <code>SELECT version FROM v$instance;</code></li>
+            <li>Postgres SQL: <code>SELECT version()</code></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Unvalidated redirect</td>
+        <td>
+          <ul>
+            <li>Set the redirect endpoint to your personal website with a fake login screen resembling the target login panel. Ensure that your login page is static and does not really send credentials anywhere.</li>
+            <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your sever. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Information disclosure</td>
+        <td>Let's say you stumble across an endpoint that allows you to simply iterate over an id (<code>?id=1337</code>) in order to disclose another user's information, stop immediately, do not look any further, and report the issue.</td>
+      </tr>
+      <tr>
+        <td>Cross-site request forgery</td>
+        <td>
+          Either attach a file to demonstrate the issue or paste the code in a code block in your report.
+          <pre><code>&lt;form action=&quot;http://example.com/settings&quot; method=&quot;POST&quot;&gt;
+   &lt;input type=&quot;hidden&quot; name=&quot;username&quot; value=&quot;example&quot;/&gt;
+   &lt;input type=&quot;hidden&quot; name=&quot;password&quot; value=&quot;password1234&quot;/&gt;
+   &lt;input type=&quot;submit&quot; value=&quot;Click me&quot;/&gt;
+&lt;/form&gt;</code></pre>
+          When designing a real-world example, either hide the form (<code>style="display:none;"</code>) and make it auto submit, or design it so that it resembles a component from the target's page.
+        </td>
+      </tr>
+      <tr>
+        <td>Server-side request forgery</td>
+        <td>Attempt to retrieve a harmless file.</td>
+      </tr>
+      <tr>
+        <td>Local file inclusion</td>
+        <td>Same applies here. Make sure to only retrieve a harmless file.</td>
+      </tr>
+      <tr>
+        <td>XML External Entity</td>
+        <td>
+          Output random harmless data. <sup><a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing#Examples">[3]</a></sup>
+          <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+  &lt;!DOCTYPE foo [  
+   &lt;!ELEMENT foo ANY &gt;
+   &lt;!ENTITY xxe SYSTEM &quot;file:///dev/random&quot; &gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>Sub-domain takeover</td>
+        <td>
+          Claim the sub-domain and serve a harmless file on a hidden page. Do not serve content on the index page. You may use the proof of concept found <a href="../files/sub-domain_takeover.html">here</a>.
+          <img style="margin-left: 0" src="../assets/img/sub-domain_takeover_poc.png">
+        </td>
+      </tr>
+    </table>
+
+    <nav class="controls">
+      <a class="button" href="is-my-report-valid.html">← Previous</a> <a class="button next" href="books.html">Next →</a>
+    </nav>
+
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sub-domain takeovers</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/stylesheet.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a href="../index.html">← Home</a>
+    </nav>
+    <h3>Sub-domain takeovers</h3>
+    <p>In order to successfully claim sub-domains pointing to deleted instances you must have a basic understanding of the Domain Name System (DNS). Please do not just blindly follow this section without really understanding the theory behind it. On a side note, whenever you claim a sub-domain make sure to only add a page and do not claim the index file. This will demonstrate good intentions when you report it to the program.</p>
+
+    <h4>Proof of concept</h4>
+    <p>This is a simple, effective, and harmless way of demonstrating that you can claim a sub-domain.</p>
+    <img src="../assets/img/sub-domain_takeover_poc.png">
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+  &lt;title&gt;Sub-domain takeover&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      position: relative;
+      background: url(&quot;https://images.unsplash.com/photo-1469474968028-56623f02e42e&quot;);
+      font-family: sans-serif;
+    }
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      padding: 50px;
+      height: auto;
+      width: 60vw;
+      background: #988AF9;
+      color: white;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    a {
+      color: #FF8F95;
+      text-decoration: none;
+      padding: 2px;
+      border-bottom: 3px solid #fff;
+      transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    a:hover {
+      border-bottom: 3px solid #FF8F95;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;h1&gt;📡 Sub-domain takeover&lt;/h1&gt;
+    &lt;p&gt;This is a proof of concept to demonstrate that I can claim
+    this sub-domain and serve content on it.&lt;/p&gt;
+    &lt;p&gt;Best regards,&lt;/p&gt;
+    &lt;a href=&quot;https://twitter.com&quot;&gt;@username&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;script&gt;alert(document.domain)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h4>List of sub-domain takeovers</h4>
+    <p>Here is a list of services where missing instances can lead to sub-domain takeovers.</p>
+
+    <h5>GitHub</h5>
+    <p>You will want to look for a sub-domain pointing to GitHub that returns a 404 when you access the hostname. Please note, simply because you found a 404 on GitHub page does not mean that you can claim it.</p>
+    <pre><code>$ host subdomain.example.com | grep "address"
+subdomain.example.com has address 192.30.252.154
+subdomain.example.com has address 192.30.252.153
+$ nslookup 192.30.252.153 | grep name
+153.252.30.192.in-addr.arpa name = lb-192-30-252-153-iad.github.com.</code></pre>
+    <img id="small_img" src="../assets/img/github_404.png">
+    <p>Add a CNAME file in your repository pointing to the sub-domain or go to your repository's settings panel and add the sub-domain in the <i>"Custom domain" section.</i></p>
+    <img id="small_img" src="../assets/img/github_custom_domain.png">
+
+    <h5>Heroku</h5>
+    <p></p>
+    
+    <footer>
+      <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
+    </footer>
+  </div>
+</body>
+</html>
