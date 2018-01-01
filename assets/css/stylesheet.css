@@ -69,6 +69,7 @@ footer {
 }
 #blue {
 	margin-top: 95px;
+	margin-bottom: 20px;
 	-webkit-transition: all 250ms;
 	-moz-transition: all 250ms;
 	transition: all 250ms;
@@ -97,6 +98,7 @@ footer {
 	}
 	#blue {
 		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
 .background-blue {
