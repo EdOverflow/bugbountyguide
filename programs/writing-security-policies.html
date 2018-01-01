@@ -48,7 +48,7 @@ Signature: https://example.com/.well-known/security.txt.sig</code></pre>
 
     <p>Also, state what assets are not in scope. It is essential that you also do not encourage hunters to go out of scope by rewarding them. In my opinion, an acceptable exception to this rule is if the vulnerability is in the high to critical range.</p>
 
-    <form onsubmit="download(this['name'].value, this['blah'].value + this['contact'].value + this['text1'].value + '\n' + this['encryption'].value + this['text2'].value + '\n' + this['acknowledgements'].value + this['text3'].value + '\n' + this['policy'].value + this['text4'].value + '\n' + this['signature'].value + this['text5'].value)">
+    <form onsubmit="download(this['name'].value, this['blah'].value + this['contact'].value + this['text1'].value + '\n' + this['encryption'].value + this['text2'].value + '\n' + this['acknowledgement'].value + this['text3'].value + '\n' + this['policy'].value + this['text4'].value + '\n' + this['signature'].value + this['text5'].value)">
         <input type="hidden" name="name" value="security.txt">
         <input type="hidden" name="blah" value="">
 
@@ -58,7 +58,7 @@ Signature: https://example.com/.well-known/security.txt.sig</code></pre>
         <label>Encryption: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.4">(description)</a></label><input name="encryption" type="hidden" value="Encryption: ">
         <input class="u-full-width" type="text" placeholder="https://example.com/pgp-key.txt" name="text2">
 
-        <label>Acknowledgements: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.7">(description)</a></label><input name="acknowledgements" type="hidden" value="Acknowledgements: "> 
+        <label>Acknowledgement: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.7">(description)</a></label><input name="acknowledgement" type="hidden" value="Acknowledgements: "> 
         <input class="u-full-width" type="text" placeholder="https://example.com/acknowledgements.html" name="text3">
 
         <label>Policy: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/draft-foudil-securitytxt-02#section-2.6">(description)</a></label><input name="policy" type="hidden" value="Policy: "> 
