@@ -52,25 +52,27 @@
         <td>Unvalidated redirect</td>
         <td>
           <ul>
-            <li>Set the redirect endpoint to a known safe domain (e.g. <code>google.com</code>), or if looking to demonstrate potential impact, to your personal website with an example login screen resembling the target's. Ensure that your login page is static, described as a proof of concept, and does not really send credentials anywhere.</li>
+            <li>Set the redirect endpoint to a known safe domain (e.g. <code>google.com</code>), or if looking to demonstrate potential impact, to your personal website with an example login screen resembling the target's.</li>
+            <li>Ensure that your proof of concept page is static, described as a proof of concept, and does not really send credentials anywhere.</li>
             <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your server. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
           </ul>
         </td>
       </tr>
       <tr>
         <td>Information exposure</td>
-        <td>Data exposure manifests in a variety of forms. Researchers are advised to use self-created test accounts (or those provisioned by a program, if applicable). Let's say you're looking for an IDOR (Insecure Direct Object Reference) vulnerability &mdash; which in this example is an endpoint allowing you to iterate over an <code>id</code> parameter (e.g. <code>?id=1337</code>) to disclose another user's information. Investigate only with the IDs of your <i>own</i> test accounts &mdash; do not leverage the issue against other users' data &mdash; and describe your full reproduction process in the report.</td>
+        <td>Data exposure manifests in a variety of forms. Researchers should use self-created test accounts (or those provisioned by the program you're working on). Let's say you're looking for an <abbr title="Insecure Direct Object Reference">IDOR</abbr> vulnerability &mdash; which in this example is an endpoint allowing you to iterate over an ID parameter (e.g. <code>?id=1337</code>) to disclose another user's information. 
+          <br/><br/>Investigate only with the IDs of your <i>own</i> test accounts &mdash; do not leverage the issue against other users' data &mdash; and describe your full reproduction process in the report.</td>
       </tr>
       <tr>
         <td>Cross-site request forgery</td>
         <td>
-          Either attach a file to demonstrate the issue or paste the code in a code block in your report.
+          After you've confirmed the presence of a CSRF bug &mdash; ensuring there are no leftover token or once-only values &mdash; either attach a file to demonstrate your proof of concept or paste the code in a code block in your report.
           <pre><code>&lt;form action=&quot;http://example.com/settings&quot; method=&quot;POST&quot;&gt;
    &lt;input type=&quot;hidden&quot; name=&quot;username&quot; value=&quot;example&quot;/&gt;
    &lt;input type=&quot;hidden&quot; name=&quot;password&quot; value=&quot;password1234&quot;/&gt;
    &lt;input type=&quot;submit&quot; value=&quot;Click me&quot;/&gt;
 &lt;/form&gt;</code></pre>
-          When designing a real-world example, either hide the form (<code>style="display:none;"</code>) and make it auto submit, or design it so that it resembles a component from the target's page.
+          When designing a real-world example, either hide the form (<code>style="display:none;"</code>) and make it submit automatically, or design it so that it resembles a component from the target's page.
         </td>
       </tr>
       <tr>
