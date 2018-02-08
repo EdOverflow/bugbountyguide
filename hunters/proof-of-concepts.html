@@ -28,19 +28,27 @@
         <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a></sup> Using <code>document.domain</code> instead of <code>alert(1)</code> can help avoid reporting XSS bugs in sandbox domains, as described on the Google <a href="https://sites.google.com/site/bughunteruniversity/improve/alert-1-considered-harmful">Bughunter University</a> site.</sup></td>
       </tr>
       <tr>
-        <td>Arbitrary code execution</td>
-        <td>Check the program security policy as specific commands may be designated for testing. For example, this set of primitives is set by <a href="https://hackerone.com/yahoo">Yahoo</a> to ensure researchers "minimise the mayhem."
+        <td>Command execution</td>
+        <td>This involves the execution of arbitrary commands on a target server. Check the program security policy as specific commands may be designated for testing. For example, this set of primitives is set by <a href="https://hackerone.com/yahoo">Yahoo</a> to ensure researchers "minimise the mayhem."
           <ul>
-            <li>Read: <code>cat /proc/1/maps</code>
-            <li>Write: <code>touch /root/your_username</code>
-            <li>Execute: <code>id</code></li>
+            <li>Read (Linux-based): <code>cat /proc/1/maps</code>
+            <li>Write (Linux-based): <code>touch /root/your_username</code>
+            <li>Execute (Linux-based): <code>id</code></li>
+          </ul>
+        </td>
+      </tr>
+        <tr>
+        <td>Code execution</td>
+        <td>This involves the manipulation of a web app such that server-side code (e.g. PHP) is executed. 
+          <ul>
+            <li>PHP: <code><?php echo 7*7; ?></code>
           </ul>
         </td>
       </tr>
       <tr>
         <td>SQL injection</td>
         <td>
-          <p>In most cases, simply grabbing the SQL server version should be enough to demonstrate basic SQL injection.</p>
+          <p>If column values can be influenced, simply grabbing the SQL server version with the following payloads should be enough to demonstrate basic SQL injection capability.</p>
           <ul>
             <li>MySQL and MSSQL: <code>SELECT @@version</code></li>
             <li>Oracle: <code>SELECT version FROM v$instance;</code></li>
@@ -96,7 +104,7 @@
         <td>This only allows you to read files located on the target system. Make sure to only retrieve a harmless file. Check the program security policy as a specific file may be designated for testing.</td><!-- todo - update -->
       </tr>
       <tr>
-        <td>XML External Entity</td>
+        <td>XML external entity processing</td>
         <td>
           Output random harmless data. <sup><a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing#Examples">[3]</a></sup>
           <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
