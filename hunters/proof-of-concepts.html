@@ -52,14 +52,14 @@
         <td>Unvalidated redirect</td>
         <td>
           <ul>
-            <li>Set the redirect endpoint to your personal website with a fake login screen resembling the target login panel. Ensure that your login page is static and does not really send credentials anywhere.</li>
-            <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your sever. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
+            <li>Set the redirect endpoint to a known safe domain (e.g. <code>google.com</code>), or if looking to demonstrate potential impact, to your personal website with an example login screen resembling the target's. Ensure that your login page is static, described as a proof of concept, and does not really send credentials anywhere.</li>
+            <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your server. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
           </ul>
         </td>
       </tr>
       <tr>
-        <td>Information disclosure</td>
-        <td>Let's say you stumble across an endpoint that allows you to simply iterate over an id (<code>?id=1337</code>) in order to disclose another user's information, stop immediately, do not look any further, and report the issue.</td>
+        <td>Information exposure</td>
+        <td>Data exposure manifests in a variety of forms. Researchers are advised to use self-created test accounts (or those provisioned by a program, if applicable). Let's say you're looking for an IDOR (Insecure Direct Object Reference) vulnerability &mdash; which in this example is an endpoint allowing you to iterate over an <code>id</code> parameter (e.g. <code>?id=1337</code>) to disclose another user's information. Investigate only with the IDs of your <i>own</i> test accounts &mdash; do not leverage the issue against other users' data &mdash; and describe your full reproduction process in the report.</td>
       </tr>
       <tr>
         <td>Cross-site request forgery</td>
@@ -75,11 +75,11 @@
       </tr>
       <tr>
         <td>Server-side request forgery</td>
-        <td>Attempt to retrieve a harmless file.</td>
+        <td>Attempt to retrieve a harmless file.</td><!-- todo - update -->
       </tr>
       <tr>
         <td>Local file inclusion</td>
-        <td>Same applies here. Make sure to only retrieve a harmless file.</td>
+        <td>Same applies here. Make sure to only retrieve a harmless file.</td><!-- todo - update -->
       </tr>
       <tr>
         <td>XML External Entity</td>
@@ -94,7 +94,7 @@
       <tr>
         <td>Sub-domain takeover</td>
         <td>
-          Claim the sub-domain and serve a harmless file on a hidden page. Do not serve content on the index page. You may use the proof of concept found <a href="../files/sub-domain_takeover.html">here</a>.
+          Claim the sub-domain discreetly and serve a harmless file on a hidden page. Do not serve content on the index page. You may use the proof of concept found <a href="../files/sub-domain_takeover.html">here</a>.
           <img style="margin-left: 0" src="../assets/img/sub-domain_takeover_poc.png">
         </td>
       </tr>
