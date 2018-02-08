@@ -25,11 +25,11 @@
       </tr>
       <tr>
         <td>Cross-site scripting</td>
-        <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a></sup></td>
+        <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a> Using <code>document.domain</code> instead of <code>alert(1)</code> can help avoid reporting XSS bugs in sandbox domains, as described on the Google <a href="https://sites.google.com/site/bughunteruniversity/improve/alert-1-considered-harmful">Bughunter University</a> site.</sup></td>
       </tr>
       <tr>
         <td>Arbitrary code execution</td>
-        <td>
+        <td>Check the program security policy as specific commands may be designated for testing. For example, this set of primitives is set by <a href="https://hackerone.com/yahoo">Yahoo</a> to ensure researchers "minimise the mayhem."
           <ul>
             <li>Read: <code>cat /proc/1/maps</code>
             <li>Write: <code>touch /root/your_username</code>
@@ -40,7 +40,7 @@
       <tr>
         <td>SQL injection</td>
         <td>
-          <p>In most cases simply grabbing the SQL server version should be enough to demonstrate basic SQL injection.</p>
+          <p>In most cases simply grabbing the SQL server version should be enough to demonstrate basic SQL injection. The program may have designated specific commands for safely demonstrating SQL injection bugs.</p>
           <ul>
             <li>MySQL and MSSQL: <code>SELECT @@version</code></li>
             <li>Oracle: <code>SELECT version FROM v$instance;</code></li>
