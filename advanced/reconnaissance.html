@@ -11,16 +11,19 @@
 <body>
   <div class="wrapper">
     <nav>
-      <a href="../index.html">← Home</a>
+      <a class="button" href="../index.html">← Home</a>
     </nav>
     <h3>Reconnaissance</h3>
-    <p>So if you are reading this I assume you are already finding issues and have a fairly basic reconnaissance methodology. This section will focus on unusual and often left-out steps during reconnaissance.</p>
+    <p>So if you are reading this, I assume you are already finding issues and have a fairly basic reconnaissance methodology. This section will focus on unusual and often left-out steps during your reconnaissance.</p>
 
     <h4>Content Security Policies</h4>
-    <p>Content Security Policies (CSP) are commonly used to prevent client-side code injection from being exploitable. What many do not realise is that they are also a wealth of knowledge about the target and its dependencies. I suggest you start actively monitoring CSPs on targets in real time for any changes and potential (sub-)domain takeovers.</p>
+	  <p><a href="https://scotthelme.co.uk/content-security-policy-an-introduction">Content Security Policies</a> (CSP) are commonly used to prevent client-side code injection from being exploitable. What many do not realise is that they are also a wealth of knowledge about the target and its dependencies. I suggest you start actively monitoring CSPs on targets in real time for any changes and potential (sub-)domain takeovers.</p>
 
     <pre><code>$ curl -I --silent http://example.com | grep Content-Security-Policy
 $ curl -I --silent http://example.com | grep "script-src\|style-src"</code></pre>
+	
+	 <p>In addition to helping researchers "identify subtle bypasses which undermine" a CSP, the <a href="https://csp-evaluator.withgoogle.com/">CSP Evaluator</a> site (and associated Chrome <a href="https://chrome.google.com/webstore/detail/csp-evaluator/fjohamlofnakbnbfjkohkbdigoodcejf">extension can also be useful for at-a-glance policy review.</p>
+	 <img id="small_img" src="../assets/img/csp_evaluator.png">
 
 	<h4>Broken links</h4>
 	<p>As described in <i><a href="https://edoverflow.com/2017/broken-link-hijacking/">"Broken Link Hijacking - How expired links can be exploited."</a></i>, if a target is importing resources from an expired endpoint, you might be able to claim it and execute client-side script on the target's page. Use <i><a href="https://github.com/stevenvachon/broken-link-checker">broken-link-checker</a></i> and check the browser's console for errors.</p>
@@ -28,8 +31,10 @@ $ curl -I --silent http://example.com | grep "script-src\|style-src"</code></pre
 	<pre><code>$ blc -rfoi --filter-level 3 https://example.com/ | grep "Getting\|BROKEN"</code></pre>
 
 	<h4>Google BigQuery</h4>
-	<p>Google's <a href="https://cloud.google.com/bigquery/">BigQuery</a> can process large quantities of data extremely quickly. This tool can easily be integrated to search the whole of GitHub's public code bases in a couple of minutes.</p>
+	<p>Google <a href="https://cloud.google.com/bigquery/">BigQuery</a> can process large quantities of data extremely quickly. The official <a href="https://cloud.google.com/bigquery/docs/">documentation</a> includes a set of quickstart tutorials that can help you get up and running with basic data analysis tasks. This tool can easily be integrated to search the whole of GitHub's public code bases in a couple of minutes.</p>
 
+	<img id="small_img" src="../assets/img/google_bigquery.png">
+	  
 	<h4>Physical reconnaissance</h4>
 	<p>Yes, I am not kidding — purely hypothetical at this point — but why not try getting hold of physical products created by the target and seeing if you can extract valuable information?</p>
 
