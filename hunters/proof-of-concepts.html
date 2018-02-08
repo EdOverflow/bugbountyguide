@@ -25,7 +25,7 @@
       </tr>
       <tr>
         <td>Cross-site scripting</td>
-        <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a> Using <code>document.domain</code> instead of <code>alert(1)</code> can help avoid reporting XSS bugs in sandbox domains, as described on the Google <a href="https://sites.google.com/site/bughunteruniversity/improve/alert-1-considered-harmful">Bughunter University</a> site.</sup></td>
+        <td><a href='javascript:alert(document.domain)'><code>alert(document.domain)</code></a> or <code>setInterval`alert\x28document.domain\x29`</code> if you have to use backticks.<sup> <a href="https://medium.com/@know.0nix/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd">[1]</a></sup> Using <code>document.domain</code> instead of <code>alert(1)</code> can help avoid reporting XSS bugs in sandbox domains, as described on the Google <a href="https://sites.google.com/site/bughunteruniversity/improve/alert-1-considered-harmful">Bughunter University</a> site.</sup></td>
       </tr>
       <tr>
         <td>Arbitrary code execution</td>
@@ -40,7 +40,7 @@
       <tr>
         <td>SQL injection</td>
         <td>
-          <p>In most cases simply grabbing the SQL server version should be enough to demonstrate basic SQL injection. The program may have designated specific commands for safely demonstrating SQL injection bugs.</p>
+          <p>In most cases, simply grabbing the SQL server version should be enough to demonstrate basic SQL injection.</p>
           <ul>
             <li>MySQL and MSSQL: <code>SELECT @@version</code></li>
             <li>Oracle: <code>SELECT version FROM v$instance;</code></li>
@@ -52,9 +52,9 @@
         <td>Unvalidated redirect</td>
         <td>
           <ul>
-            <li>Set the redirect endpoint to a known safe domain (e.g. <code>google.com</code>), or if looking to demonstrate potential impact, to your personal website with an example login screen resembling the target's.</li>
+            <li>Set the redirect endpoint to a known safe domain (e.g. <code>google.com</code>), or if looking to demonstrate potential impact, to your own website with an example login screen resembling the target's.</li>
             <li>Ensure that your proof of concept page is static, described as a proof of concept, and does not really send credentials anywhere.</li>
-            <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your server. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
+            <li>If the target uses <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a>, you can try to leak the OAuth token to your server to maximise impact. <sup><a href="https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/">[2]</a></sup></li>
           </ul>
         </td>
       </tr>
