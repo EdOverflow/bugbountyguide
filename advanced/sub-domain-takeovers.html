@@ -14,7 +14,7 @@
       <a href="../index.html">← Home</a>
     </nav>
     <h3>Sub-domain takeovers</h3>
-    <p>In order to successfully claim sub-domains pointing to deleted instances you must have a basic understanding of the Domain Name System (DNS). Please do not just blindly follow this section without really understanding the theory behind it. On a side note, whenever you claim a sub-domain make sure to only add a page and do not claim the index file. This will demonstrate good intentions when you report it to the program.</p>
+    <p>In order to successfully claim sub-domains pointing to deleted instances, you must have a basic understanding of the <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-dns-terminology-components-and-concepts">Domain Name System</a> (DNS). Please do not just blindly follow this section without really understanding the theory behind it. On a side note, whenever you claim a sub-domain, make sure to only add a page and <i>do not</i> claim the index file. This will demonstrate good intentions when you report it to the program.</p>
 
     <h4>Proof of concept</h4>
     <p>This is a simple, effective, and harmless way of demonstrating that you can claim a sub-domain.</p>
@@ -44,7 +44,7 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
     a {
-      color: #FF8F95;
+      color: #f8d9db;
       text-decoration: none;
       padding: 2px;
       border-bottom: 3px solid #fff;
@@ -68,10 +68,10 @@
 &lt;/html&gt;</code></pre>
 
     <h4>List of sub-domain takeovers</h4>
-    <p>Here is a list of services where missing instances can lead to sub-domain takeovers.</p>
+    <p>Here is a list of services where missing instances can potentially lead to sub-domain takeovers.</p>
 
-    <h5>GitHub</h5>
-    <p>You will want to look for a sub-domain pointing to GitHub that returns a 404 when you access the hostname. Please note, simply because you found a 404 on GitHub page does not mean that you can claim it.</p>
+    <h5>GitHub Pages</h5>
+    <p>You will want to look for a sub-domain pointing to GitHub that returns a 404 when you access the hostname. Please note that just because you found a 404 on a GitHub Pages site does not mean that you can claim it.</p>
     <pre><code>$ host subdomain.example.com | grep "address"
 subdomain.example.com has address 192.30.252.154
 subdomain.example.com has address 192.30.252.153
@@ -81,6 +81,10 @@ $ nslookup 192.30.252.153 | grep name
     <p>Add a CNAME file in your repository pointing to the sub-domain or go to your repository's settings panel and add the sub-domain in the <i>"Custom domain" section.</i></p>
     <img id="small_img" src="../assets/img/github_custom_domain.png">
 
+    <h5>WordPress.com Custom Domain</h5>
+    <p>WordPress.com is a hosted website plaform from <a href="https://automattic.com/">Automattic</a>. Customers may point custom domains to their WordPress.com sites after upgrading to a <a href="https://wordpress.com/pricing/">paid</a> plan. You will want to look for an asset displaying a <code>domain mapping upgrade not found</code> error:  
+    <img id="small_img" src="../assets/img/wordpress_upgrade_error.png">
+    <p>Any of the WordPress.com paid plans can be used to take over a vulnerable asset. Purchase a plan and supply the sub-domain as your "site address" for upgrade. Create a discreet proof of concept and set the site privacy settings to "Hidden" to discourage search engine indexing.
     <h5>Heroku</h5>
     <p></p>
     
