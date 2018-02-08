@@ -85,6 +85,12 @@ $ nslookup 192.30.252.153 | grep name
     <p>WordPress.com is a hosted website plaform from <a href="https://automattic.com/">Automattic</a>. Customers may point custom domains to their WordPress.com sites after upgrading to a <a href="https://wordpress.com/pricing/">paid</a> plan. You will want to look for an asset displaying a <code>domain mapping upgrade not found</code> error:  
     <img id="small_img" src="../assets/img/wordpress_upgrade_error.png">
     <p>Any of the WordPress.com paid plans can be used to take over a vulnerable asset. Purchase a plan and supply the sub-domain as your "site address" for upgrade. Create a discreet proof of concept and set the site privacy settings to "Hidden" to discourage search engine indexing.
+    
+    <h5>UserVoice</h5>
+    <p>UserVoice is a customer engagement platform. Customers may point custom domains to their UserVoice sites following <a href="https://feedback.uservoice.com/knowledgebase/articles/18423-set-up-your-own-url-domain-for-uservoice">this</a> procedure, which results in a CNAME record pointing to <code>target-name.uservoice.com</code>.</p>
+    <img id="small_img" src="../assets/img/uservoice_error.png">
+    <p>Discovering a <code>this UserVoice subdomain is currently available</code> message may indicate that you can take over the asset by creating a UserVoice account with the same <code>target-name</code> as the CNAME record.
+    
     <h5>Heroku</h5>
     <p></p>
     
