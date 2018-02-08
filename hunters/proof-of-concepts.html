@@ -77,7 +77,16 @@
       </tr>
       <tr>
         <td>Server-side request forgery</td>
-        <td>Attempt to retrieve a harmless file.</td><!-- todo - update -->
+        <td>The <a href="https://www.hackerone.com/blog-How-To-Server-Side-Request-Forgery-SSRF">"How To"</a> article from HackerOne is an excellent introduction to SSRF. As Jobert explains, webhooks, parsers, and PDF generator features are often vulnerable.
+        <br/><br/>The impact of SSRF varies &mdash; a non-exhaustive list of SSRF proof of concepts includes the following:
+        <ul>
+          <li>reading local files</li>
+          <li>obtaining cloud instance <a href="https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/when-a-web-application-ssrf-causes-the-cloud-to-rain-credentials-and-more">metadata</a></li>
+          <li>making requests to internal services (e.g. Redis)</li>
+          <li>accessing restricted databases</li>
+          </ul>
+          </td>
+   
       </tr>
       <tr>
         <td>Local file inclusion</td>
