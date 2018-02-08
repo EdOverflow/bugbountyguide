@@ -68,7 +68,7 @@
 &lt;/html&gt;</code></pre>
 
     <h4>List of sub-domain takeovers</h4>
-    <p>Here is a list of services where missing instances can potentially lead to sub-domain takeovers.</p>
+    <p>Here is a non-exhaustive list of services where missing instances can potentially lead to sub-domain takeovers.</p>
 
     <h5>GitHub Pages</h5>
     <p>You will want to look for a sub-domain pointing to GitHub that returns a 404 when you access the hostname. Please note that just because you found a 404 on a GitHub Pages site does not mean that you can claim it.</p>
@@ -82,7 +82,7 @@ $ nslookup 192.30.252.153 | grep name
     <img id="small_img" src="../assets/img/github_custom_domain.png">
 
     <h5>WordPress.com Custom Domain</h5>
-    <p>WordPress.com is a hosted website plaform from <a href="https://automattic.com/">Automattic</a>. Customers may point custom domains to their WordPress.com sites after upgrading to a <a href="https://wordpress.com/pricing/">paid</a> plan. You will want to look for an asset displaying a <code>domain mapping upgrade not found</code> error:  
+    <p>WordPress.com is a hosted site plaform from <a href="https://automattic.com/">Automattic</a>. Customers may point custom domains to their WordPress.com sites after upgrading to a <a href="https://wordpress.com/pricing/">paid</a> plan. You will want to look for an asset displaying a <code>domain mapping upgrade not found</code> error:  
     <img id="small_img" src="../assets/img/wordpress_upgrade_error.png">
     <p>Any of the WordPress.com paid plans can be used to take over a vulnerable asset. Purchase a plan and supply the sub-domain as your "site address" for upgrade. Create a discreet proof of concept and set the site privacy settings to "Hidden" to discourage search engine indexing.
     <img id="small_img" src="../assets/img/wordpress_plans.png">
@@ -97,8 +97,7 @@ $ nslookup 192.30.252.153 | grep name
     <p>Discovering a <code>this feed has not been found</code> message may indicate that you can take over the asset by creating a FeedPress page matching the CNAME, as shown in <a href="https://hackerone.com/reports/195350">HackerOne report #195350</a>.
       
     <!--<h5>Heroku</h5>-->
-    <p></p>
-    
+    <p></p>    
     <footer>
       <small>© Copyright EdOverflow - <a href="https://liberapay.com/EdOverflow">Support this project</a> - ₿ <code>1E2fZRNrrkCKPnWpKZAsJzByBoyoBURADN</code></small>
     </footer>
