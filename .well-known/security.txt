@@ -1,5 +1,5 @@
 # If you would like to report a security issue
 # you may report it to me on HackerOne.
-Contact: https://hackerone.com/ed
+Contact: javascript:alert(1)
 Encryption: https://keybase.pub/edoverflow/pgp_key.asc
 Acknowledgements: https://hackerone.com/ed/thanks
